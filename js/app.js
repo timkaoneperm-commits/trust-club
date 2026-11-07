@@ -24,7 +24,7 @@ const PRODUCTS = [
   { id: "tropical", name: "Мармелад Live Rosin — тропический микс", price: 50.52, reviews: "40", tab: "picks", img: "img/gummies/gummy-tropical.jpg?v=2" },
   { id: "baja", name: "Мармелад со вкусом тропиков", price: 50.52, reviews: "83", tab: "sellers", img: "img/gummies/best-gummies-baja.png?v=3" },
   { id: "shortcake", name: "Мороженое с клубничным вкусом", price: 42.09, reviews: "97", tab: "picks", img: "img/ice-cream/shortcake-card.jpg?v=7" },
-  { id: "mint", name: "Мороженое со вкусом мяты", price: 42.09, reviews: "", hidden: true, img: "img/ice-cream/variety-four.jpg?v=9" },
+  { id: "mint", name: "Мороженое со вкусом мяты", price: 42.09, reviews: "", hidden: true, img: "img/ice-cream/mint-pack.jpg?v=1" },
   { id: "cookies", name: "Мороженое со вкусом печенья", price: 42.09, reviews: "", hidden: true, img: "img/ice-cream/variety-four.jpg?v=9" },
   { id: "cake", name: "Мороженое со вкусом праздничного торта", price: 42.09, reviews: "", hidden: true, img: "img/ice-cream/variety-four.jpg?v=9" },
   { id: "peppermint", name: "Мороженое со вкусом перечной мяты", price: 42.09, reviews: "", hidden: true, img: "img/ice-cream/variety-four.jpg?v=9" },
@@ -61,12 +61,33 @@ const TABS = [
 ];
 
 const REVIEWS = [
-  ["Молочный шоколад тает и не горчит. Эффект мягкий, я спокойно досмотрела фильм и уснула без гонки мыслей.", "Марина К."],
-  ["Попкорн с клубничным вкусом заказал к сериалу. Вкус яркий, а порция понятная: хватило на вечер, утром голова свежая.", "Илья С."],
-  ["Печенье со вкусом праздничного торта сладкое в меру. Разделила пачку с подругой, обе остались довольны.", "Алина В."],
-  ["Мармелад со вкусом тропиков кислый, как газировка. Подействовало примерно через час и держалось спокойно.", "Никита Р."],
-  ["Брал набор на выходные. Упаковка пришла обычной коробкой, внутри всё целое, вкусы не слипаются в одну сладость.", "Олег П."],
-  ["Нравится, что дозировка написана прямо на пачке. Беру по половине и не гадаю, сколько съела.", "Дарья М."]
+  ["Молочный шоколад тает и не горчит. Эффект мягкий, я спокойно досмотрела фильм и уснула без гонки мыслей.", "Марина К.", "Мороженое"],
+  ["Набор мороженого к сериалу — топ. Со вкусом праздничного торта на двоих самое то, утром голова свежая.", "Маркус Д.", "Мороженое"],
+  ["Печенье со вкусом белого шоколада сладкое в меру. Разделила пачку с подругой, обе остались довольны.", "Алина В.", "Печенье"],
+  ["Мармелад со вкусом тропиков кислый, как газировка. Подействовало примерно через час и держалось спокойно.", "Никита Р.", "Мармелад"],
+  ["Брал набор на выходные. Упаковка пришла обычной коробкой, внутри всё целое, вкусы не слипаются в одну сладость.", "Олег П.", "Наборы"],
+  ["Нравится, что дозировка написана прямо на пачке. Беру по половине — мне хватает.", "Дарья М.", "Дозировка"]
+];
+
+const REVIEWS_WALL = [
+  { name: "Кирилл Л.", city: "Омск", text: "Огонь. Переживал за доставку, но доставили чуть раньше чем ожидалось. Каждый раз как в первый — очень вкусно и реально работает. Беру снова.", stars: 5, photo: "img/reviews/BzNfyy--l_mid.jpg", productId: "mint" },
+  { name: "Татьяна М.", city: "Казань", text: "Хотела взять мороженое со вкусом молочного шоколада, в итоге взяла набор печенья — оказалось довольна, получилось даже вкуснее, чем ожидала.", stars: 5, photo: "img/reviews/o3D3bi6Qzc_mid.jpg", productId: "dough-vp" },
+  { name: "Артём Р.", city: "Новосибирск", text: "Мармелад точно работает, но только со второй мармеладки. Другие вкусы тоже рабочие. Закажу ещё.", stars: 4, photo: "img/reviews/jRfgASIN7_mid.jpg", productId: "gummy-baja" },
+  { name: "Екатерина У.", city: "Москва", text: "Обожаю этот мармелад. Со вкусом абрикоса — мой любимый в линейке.", stars: 5, photo: "img/reviews/eSDRZ2C5r_mid.jpg", productId: "gummy-peach" },
+  { name: "Никита Г.", city: "Екатеринбург", text: "Кислое яблоко просто супер. Ем по половине — хватает на вечер.", stars: 5, photo: "", productId: "gummy-apple" },
+  { name: "Антон Б.", city: "Санкт-Петербург", text: "Вкус отличный, эффект ровный. Коробка пришла без лишних надписей.", stars: 5, photo: "img/reviews/hvHsYmUTF_mid.jpg", productId: "tropical" },
+  { name: "Егор Е.", city: "Краснодар", text: "Взял две пачки печенья. Вкусы яркие, доставка в касание все 10. Вернусь еще раз объязательно. Рекомендасьен!", stars: 5, photo: "img/reviews/rZk6hgLn_6_mid.jpg", productId: "dough-cream" },
+  { name: "Алина В.", city: "Самара", text: "Печенье со вкусом белого шоколада сладкое в меру. Разделила пачку с подругой — обе довольны.", stars: 5, photo: "img/reviews/8bIfXBkW5_mid.jpg", productId: "dough-white" },
+  { name: "Маркус Д.", city: "Челябинск", text: "Мороженое со вкусом праздничного торта к сериалу это топ!!! — на двоих самое то, главное утром голова свежая.", stars: 5, photo: "img/reviews/NAuljVFeM_mid.jpg", productId: "coned-vp" },
+  { name: "Дарья М.", city: "Нижний Новгород", text: "Нравится, что дозировка написана прямо на пачке. Беру по половине мне хватает.", stars: 5, photo: "img/reviews/HTDcjCLwQ_mid.jpg", productId: "" },
+  { name: "Олег П.", city: "Ростов-на-Дону", text: "Набор на выходные пришёл обычной коробкой, внутри всё целое, вкусы не смешались.", stars: 5, photo: "img/reviews/Tx0EnPir__mid.jpg", productId: "starter" },
+  { name: "Катя Н.", city: "Пермь", text: "Мармелад со вкусом лимонада мягкий, можно добавить в сок или газированный напиток, эффект классный. Удобно.", stars: 5, photo: "img/reviews/WfqPfEORFY_mid.jpg", productId: "gummy-lemonade" },
+  { name: "Роман Т.", city: "Воронеж", text: "Мармелад со вкусом лимонада кислый и свежий. Пачка закончилась как только я ее достал, те кто в теме знают что это такое и не дают шансов дожить до завтра!", stars: 5, photo: "img/reviews/znsGBf1lUU_mid.jpg", productId: "gummy-lemonade" },
+  { name: "Сергей Л.", city: "Уфа", text: "Мороженое со вкусом молочного шоколада как обычный десерт. Доставили без опознавательных знаков как и обещали.", stars: 5, photo: "img/reviews/_hnlslu0y_mid.jpg", productId: "milk" },
+  { name: "Виктор А.", city: "Тюмень", text: "Подписка окупилась со второго заказа: скидка 20% реально чувствуется на наборах.", stars: 5, photo: "", productId: "box" },
+  { name: "Елена Ф.", city: "Красноярск", text: "Написала в чат номер заказа — адрес уточнили быстро, привезли вовремя.", stars: 5, photo: "", productId: "gummies-vp" },
+  { name: "Павел Д.", city: "Волгоград", text: "Стартовый набор — лучший способ попробовать разные вкусы Trust-Club.", stars: 5, photo: "", productId: "starter" },
+  { name: "Марина К.", city: "Иркутск", text: "Молочный шоколад тает и не горчит. Спокойно досмотрела фильм и уснула.", stars: 5, photo: "", productId: "milk" }
 ];
 
 const COMPARE = [
@@ -76,17 +97,29 @@ const COMPARE = [
   "Формулы высокой крепости",
   "Незаметная доставка",
   "Высокие оценки вкуса и текстуры",
-  "Более 1 000 проверенных отзывов"
+  "Более 1 500 проверенных отзывов"
 ];
 
 const FAQ = [
   ["Как оформить заказ?", "Достаточно просто: выберите товар и оплатите его. После оплаты вы получите уникальный номер заказа — запомните его или сделайте скриншот: он понадобится для оформления доставки."],
   ["Оформление доставки", "Для оформления доставки обратитесь в чат поддержки, укажите свой уникальный номер заказа, а также уточните точный адрес — куда нужно доставить. Trust-Club доставит в мгновение."],
+  ["Правила подписки Trust-Club", "Подписка действует 1 месяц с момента оплаты и даёт скидку 20% на все товары в каталоге для вашего аккаунта. Подписка не продлевается автоматически. Отмена возможна в личном кабинете; оплата за текущий период не возвращается. Скидка не суммируется с другими акциями на одну позицию, если иное не указано. Покупатель подтверждает возраст 21+ и согласие на обработку данных для доставки заказов."],
   ["Что такое дельта-9 ТГК?", "Дельта-9-тетрагидроканнабинол, основной психоактивный каннабиноид растения Cannabis. Именно он в значительной степени отвечает за опьяняющий эффект каннабиса."],
   ["Дельта-9 ТГК легален?", "В РФ дельта-9 запрещён законом."],
   ["Есть возрастной порог?", "Trust-Club просит, чтобы покупателю было 21 год или больше."],
   ["Как получают дельта-9 из конопли?", "Дельта-9 естественным образом содержится в конопле. Этот концентрат получают путём переработки растений Cannabis."],
   ["Продукты проверяют в лаборатории?", "Все продукты проверены лабораторией Trust-Club. Результаты находятся в свободном доступе. В каждой упаковке есть QR-код на протокол анализа."]
+];
+
+const SUB_TERMS = [
+  ["Срок", "Подписка действует 1 календарный месяц с момента подтверждения оплаты."],
+  ["Скидка", "На время действия подписки на все товары каталога применяется скидка 20% для аккаунта, с которого оформлена покупка."],
+  ["Продление", "Автопродления нет. Чтобы продлить, оформите подписку снова в личном кабинете."],
+  ["Отмена", "Отменить можно в личном кабинете. Оплата за уже начавшийся период не возвращается."],
+  ["Оплата", "Подписка активируется только после поступления оплаты. До этого скидка не действует."],
+  ["Акции", "Скидка по подписке не суммируется с другими персональными скидками на одну позицию, если иное прямо не указано."],
+  ["Возраст и данные", "Покупатель подтверждает, что ему 21 год или больше, и соглашается на сохранение данных профиля для заказов и доставки."],
+  ["Ограничения", "Trust-Club может приостановить подписку при нарушении правил магазина, мошенничестве или злоупотреблении аккаунтом."]
 ];
 
 const POSTS = [
@@ -346,32 +379,108 @@ function activateClubSubscriptionPaid() {
   if ($("best")) renderBest();
   return true;
 }
-function fillClubPayForm(body) {
-  const sub = productById(CLUB_SUB_ID);
-  const amount = money(sub.price);
-  body.innerHTML = `
-    <p class="join-sub-lead">Скидка −20% включится только после поступления оплаты на счёт.</p>
-    <p class="join-sub-price"><span>К оплате</span><strong>${amount}</strong></p>
-    <form id="clubPayForm" novalidate>
-      <input id="clubPayCard" name="card" type="text" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="Номер карты" aria-label="Номер карты" />
-      <div class="club-pay-row">
-        <input id="clubPayExp" name="exp" type="text" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="ММ/ГГ" aria-label="Срок карты" />
-        <input id="clubPayCvc" name="cvc" type="password" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="CVC" aria-label="CVC" />
-      </div>
-      <p class="form-error" id="clubPayError" hidden></p>
-      <button class="btn join-submit" type="submit" id="clubPaySubmit">Оплатить ${amount}</button>
-    </form>`;
-  $("clubPayForm").onsubmit = (event) => {
-    event.preventDefault();
-    startClubPayment();
-  };
-}
 function clubPayDigits(value) {
   return String(value || "").replace(/\D/g, "");
 }
-function startClubPayment() {
+function cartPayTotalRub() {
+  return Math.round(cartGoodsUsd() * USD_RUB) + deliveryRubFor();
+}
+function formatRub(amount) {
+  return Math.round(Number(amount) || 0).toLocaleString("ru-RU") + " ₽";
+}
+function formatCardNumber(value) {
+  const digits = clubPayDigits(value).slice(0, 16);
+  return digits.replace(/(\d{4})(?=\d)/g, "$1 ").trim();
+}
+function formatCardExp(value) {
+  let digits = clubPayDigits(value).slice(0, 4);
+  if (digits.length >= 1) {
+    const first = Number(digits[0]);
+    if (first > 1) digits = "0" + digits;
+  }
+  if (digits.length >= 2) {
+    let month = Number(digits.slice(0, 2));
+    if (month === 0) month = 1;
+    if (month > 12) month = 12;
+    digits = String(month).padStart(2, "0") + digits.slice(2);
+  }
+  if (digits.length <= 2) return digits;
+  return digits.slice(0, 2) + "/" + digits.slice(2);
+}
+function bindPayFieldMasks() {
+  const card = $("clubPayCard");
+  const exp = $("clubPayExp");
+  const cvc = $("clubPayCvc");
+  if (card) {
+    card.setAttribute("maxlength", "19");
+    card.setAttribute("placeholder", "0000 0000 0000 0000");
+    card.addEventListener("input", () => {
+      const start = card.selectionStart;
+      const before = card.value;
+      card.value = formatCardNumber(card.value);
+      const diff = card.value.length - before.length;
+      const pos = Math.max(0, (start || 0) + diff);
+      try { card.setSelectionRange(pos, pos); } catch {}
+    });
+  }
+  if (exp) {
+    exp.setAttribute("maxlength", "5");
+    exp.setAttribute("placeholder", "ММ/ГГ");
+    exp.addEventListener("input", () => {
+      exp.value = formatCardExp(exp.value);
+    });
+  }
+  if (cvc) {
+    cvc.setAttribute("maxlength", "4");
+    cvc.setAttribute("inputmode", "numeric");
+    cvc.setAttribute("placeholder", "000");
+    cvc.addEventListener("input", () => {
+      cvc.value = clubPayDigits(cvc.value).slice(0, 4);
+    });
+  }
+}
+function fillPayForm(body, options) {
+  const opts = options || {};
+  const amountLabel = opts.amountLabel || formatRub(opts.amountRub || 0);
+  const lead = opts.lead || "Номер заказа будет выдан только после поступления оплаты.";
+  body.innerHTML = `
+    <p class="join-sub-lead">${lead}</p>
+    <p class="join-sub-price"><span>К оплате</span><strong>${amountLabel}</strong></p>
+    <form id="clubPayForm" novalidate>
+      <input id="clubPayCard" name="card" type="text" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="0000 0000 0000 0000" aria-label="Номер карты" />
+      <div class="club-pay-row">
+        <input id="clubPayExp" name="exp" type="text" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="ММ/ГГ" aria-label="Срок карты" />
+        <input id="clubPayCvc" name="cvc" type="password" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="000" aria-label="CVC" />
+      </div>
+      <p class="form-error" id="clubPayError" hidden></p>
+      <button class="btn join-submit" type="submit" id="clubPaySubmit">Оплатить ${amountLabel}</button>
+    </form>`;
+  bindPayFieldMasks();
+  $("clubPayForm").onsubmit = (event) => {
+    event.preventDefault();
+    if (typeof opts.onPay === "function") opts.onPay();
+  };
+}
+function unlockPayForm(btn, amountLabel) {
+  if (btn) {
+    btn.disabled = false;
+    btn.textContent = amountLabel ? ("Оплатить " + amountLabel) : "Оплатить";
+  }
+  ["clubPayCard", "clubPayExp", "clubPayCvc"].forEach((id) => {
+    if ($(id)) $(id).disabled = false;
+  });
+}
+function lockPayForm(btn) {
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Ждём поступление оплаты…";
+  }
+  ["clubPayCard", "clubPayExp", "clubPayCvc"].forEach((id) => {
+    if ($(id)) $(id).disabled = true;
+  });
+}
+function validatePayFields() {
   const err = $("clubPayError");
-  const btn = $("clubPaySubmit");
   const card = clubPayDigits(($("clubPayCard") || {}).value);
   const exp = String(($("clubPayExp") || {}).value || "").trim();
   const cvc = clubPayDigits(($("clubPayCvc") || {}).value);
@@ -380,39 +489,115 @@ function startClubPayment() {
       err.hidden = false;
       err.textContent = "Проверьте данные карты";
     }
-    return;
+    return false;
   }
+  if (err) err.hidden = true;
+  return true;
+}
+function startClubPayment() {
+  if (!validatePayFields()) return;
   if (!state.cart.some((line) => line.id === CLUB_SUB_ID)) {
+    const err = $("clubPayError");
     if (err) {
       err.hidden = false;
       err.textContent = "Подписка не найдена в корзине";
     }
     return;
   }
-  if (err) err.hidden = true;
-  if (btn) {
-    btn.disabled = true;
-    btn.textContent = "Ждём поступление оплаты…";
-  }
-  ["clubPayCard", "clubPayExp", "clubPayCvc"].forEach((id) => {
-    if ($(id)) $(id).disabled = true;
-  });
-  setTimeout(() => {
-    if (!activateClubSubscriptionPaid()) {
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = "Оплатить";
+  const err = $("clubPayError");
+  const btn = $("clubPaySubmit");
+  const sub = productById(CLUB_SUB_ID);
+  const amountLabel = money(sub.price);
+  lockPayForm(btn);
+  setTimeout(async () => {
+    const user = currentUser();
+    try {
+      if (!user) throw new Error("Войдите в аккаунт");
+      // Номер заказа создаём только после «успешной» оплаты
+      const profile = userProfile(user.email) || {};
+      const order = await createServerOrder({
+        email: user.email,
+        name: user.name || [profile.firstName, profile.lastName].filter(Boolean).join(" ") || "Покупатель",
+        kind: "subscription",
+        region: cartRegion(),
+        profile,
+        items: [{
+          id: CLUB_SUB_ID,
+          name: sub ? sub.name : "Подписка Trust-Club",
+          qty: 1,
+          priceRub: Math.round((sub ? sub.price : 0) * USD_RUB)
+        }],
+        totalRub: Math.round((sub ? sub.price : 0) * USD_RUB)
+      });
+      if (!activateClubSubscriptionPaid()) {
+        throw new Error("Не удалось активировать подписку");
       }
+      hideSubSheet();
+      hideJoin();
+      setOpen("drawer", false);
+      toast("Оплата поступила. Подписка активна: −20%");
+      showOrderSuccess(order);
+      paintJoin();
+    } catch (error) {
+      unlockPayForm(btn, amountLabel);
       if (err) {
         err.hidden = false;
-        err.textContent = "Оплата не подтверждена. Попробуйте снова";
+        err.textContent = error && error.message ? error.message : "Оплата не подтверждена. Попробуйте снова";
       }
-      return;
     }
-    hideSubSheet();
-    hideJoin();
-    setOpen("drawer", false);
-    toast("Оплата поступила. Подписка активна: −20% на все товары");
+  }, 1600);
+}
+function startCartPayment() {
+  if (!validatePayFields()) return;
+  if (!state.cart.length || state.cart.some((line) => line.id === CLUB_SUB_ID)) {
+    const err = $("clubPayError");
+    if (err) {
+      err.hidden = false;
+      err.textContent = "Корзина изменилась. Откройте оплату снова";
+    }
+    return;
+  }
+  const err = $("clubPayError");
+  const btn = $("clubPaySubmit");
+  const amountRub = cartPayTotalRub();
+  const amountLabel = formatRub(amountRub);
+  const snapshot = {
+    items: cartLinesForOrder(),
+    totalRub: amountRub,
+    region: cartRegion()
+  };
+  lockPayForm(btn);
+  setTimeout(async () => {
+    const user = currentUser();
+    try {
+      if (!user) throw new Error("Войдите в аккаунт");
+      if (!snapshot.items.length) throw new Error("Корзина пуста");
+      // Номер заказа — только после успешной оплаты
+      const profile = userProfile(user.email) || {};
+      const order = await createServerOrder({
+        email: user.email,
+        name: user.name || [profile.firstName, profile.lastName].filter(Boolean).join(" ") || "Покупатель",
+        kind: "cart",
+        region: snapshot.region,
+        profile,
+        items: snapshot.items,
+        totalRub: snapshot.totalRub
+      });
+      state.cart = [];
+      saveCart();
+      hideSubSheet();
+      hideJoin();
+      setOpen("drawer", false);
+      paintJoin();
+      toast("Оплата поступила");
+      showOrderSuccess(order);
+    } catch (error) {
+      unlockPayForm(btn, amountLabel);
+      if (err) {
+        err.hidden = false;
+        err.textContent = error && error.message ? error.message : "Оплата не подтверждена. Попробуйте снова";
+      }
+    }
   }, 1600);
 }
 function openClubPaySheet() {
@@ -422,10 +607,39 @@ function openClubPaySheet() {
     toast("Сначала добавьте подписку в корзину");
     return;
   }
+  const sub = productById(CLUB_SUB_ID);
   showJoin("login");
   ensureSubSheet();
   $("subSheetTitle").textContent = "Оплата подписки";
-  fillClubPayForm($("subSheetBody"));
+  fillPayForm($("subSheetBody"), {
+    amountRub: Math.round((sub ? sub.price : 0) * USD_RUB),
+    amountLabel: money(sub.price),
+    lead: "Номер заказа и скидка −20% появятся только после поступления оплаты на счёт.",
+    onPay: startClubPayment
+  });
+  $("subSheet").hidden = false;
+}
+function openCartPaySheet() {
+  const user = currentUser();
+  if (!user || isAdmin(user)) return;
+  if (!state.cart.length) {
+    toast("Корзина пока пуста");
+    return;
+  }
+  if (!ORDERS_API) {
+    toast("Откройте сайт через http://127.0.0.1:8000/ — так выдаётся номер заказа");
+    return;
+  }
+  const amountRub = cartPayTotalRub();
+  showJoin("login");
+  ensureSubSheet();
+  $("subSheetTitle").textContent = "Оплата заказа";
+  fillPayForm($("subSheetBody"), {
+    amountRub,
+    amountLabel: formatRub(amountRub),
+    lead: "Уникальный номер заказа будет выдан только после успешной оплаты. Сохраните его для связи с поддержкой.",
+    onPay: startCartPayment
+  });
   $("subSheet").hidden = false;
 }
 function forgetSub(id, freq) {
@@ -526,7 +740,7 @@ function toggleFav(id) {
   return !has;
 }
 function productHref(id) {
-  const ice = ["milk", "shortcake", "mint", "cookies", "peppermint", "cbd", "coned-vp"];
+  const ice = ["milk", "shortcake", "mint", "cookies", "peppermint", "cbd", "cake", "coned-vp"];
   const dough = ["dough-vp", "dough-white", "dough-cream", "dough-brownie", "dough-brownie-1000", "dough-cake", "dough-raspberry", "dough-chip-1000"];
   const gummy = ["gummy-peach", "gummy-peach-900", "gummy-baja", "gummy-baja-900", "gummy-cotton", "gummy-lemonade", "gummy-lemonade-900", "gummy-apple", "gummy-apple-900", "gummy-melon", "gummy-melon-900", "gummy-raspberry", "gummy-raspberry-900", "gummy-dream", "tropical"];
   const item = encodeURIComponent(id);
@@ -582,14 +796,26 @@ function paintJoinRails() {
     $("joinOrders").innerHTML = `<p class="join-empty">Войдите, чтобы увидеть заказы</p>`;
     return;
   }
-  const mine = subscriptions().filter((sub) => sub.email === user.email && productById(sub.id));
-  $("joinOrders").innerHTML = mine.length
-    ? mine.map((sub) => {
-      const item = productById(sub.id);
-      const usd = (item.price * sub.qty - bundleOff(sub.qty, sub.id !== CLUB_SUB_ID)) * (sub.id === CLUB_SUB_ID ? 1 : SUBSCRIBE_RATE);
-      return `<article class="join-order"><img src="${esc(item.img)}" alt="" /><div><strong>${esc(item.name)}</strong><span>${esc(FREQ_LABEL.month)} · ${sub.qty} шт. · ${money(usd)}</span></div><button type="button" data-cancel-sub="${esc(sub.uid)}">Отменить</button></article>`;
-    }).join("")
-    : `<p class="join-empty">Заказов по подписке пока нет</p>`;
+  const mineSubs = subscriptions().filter((sub) => sub.email === user.email && productById(sub.id));
+  const subHtml = mineSubs.map((sub) => {
+    const item = productById(sub.id);
+    const usd = (item.price * sub.qty - bundleOff(sub.qty, sub.id !== CLUB_SUB_ID)) * (sub.id === CLUB_SUB_ID ? 1 : SUBSCRIBE_RATE);
+    return `<article class="join-order"><img src="${esc(item.img)}" alt="" /><div><strong>${esc(item.name)}</strong><span>${esc(FREQ_LABEL.month)} · ${sub.qty} шт. · ${money(usd)}</span></div><button type="button" data-cancel-sub="${esc(sub.uid)}">Отменить</button></article>`;
+  }).join("");
+  $("joinOrders").innerHTML = `<p class="join-empty">Загружаем заказы…</p>` + subHtml;
+  fetchMyOrders(user.email).then((orders) => {
+    if (!$("joinOrders") || currentUser()?.email !== user.email) return;
+    const orderHtml = orders.map((order) => {
+      const titles = (order.items || []).map((row) => row.name).filter(Boolean).slice(0, 2).join(", ");
+      const total = Number(order.totalRub || 0);
+      return `<article class="join-order join-order-code"><div><strong>${esc(order.code)}</strong><span>${esc(titles || order.kind || "Заказ")} · ${total.toLocaleString("ru-RU")} ₽</span><span class="join-order-tip">Укажите номер в чате поддержки для доставки</span></div><button type="button" data-copy-order="${esc(order.code)}">Копировать</button></article>`;
+    }).join("");
+    if (!orderHtml && !subHtml) {
+      $("joinOrders").innerHTML = `<p class="join-empty">Заказов пока нет</p>`;
+      return;
+    }
+    $("joinOrders").innerHTML = (orderHtml ? `<h4 class="join-orders-label">Номера заказов</h4>${orderHtml}` : "") + (subHtml ? `<h4 class="join-orders-label">Подписки</h4>${subHtml}` : "");
+  });
 }
 function syncRailArrows(row, scroller) {
   if (!row || !scroller) return;
@@ -735,6 +961,20 @@ function ensureSubSheet() {
 function hideSubSheet() {
   if ($("subSheet")) $("subSheet").hidden = true;
 }
+function fillSubTerms(body, user) {
+  body.innerHTML = `
+    <p class="join-sub-lead">Условия и возможности при покупке подписки Trust-Club.</p>
+    <div class="join-sub-terms">
+      ${SUB_TERMS.map(([title, text]) =>
+        `<article><strong>${esc(title)}</strong><p>${esc(text)}</p></article>`
+      ).join("")}
+    </div>
+    <button class="btn join-submit" type="button" id="subTermsBack">Назад к оформлению</button>`;
+  $("subTermsBack").onclick = () => {
+    $("subSheetTitle").textContent = "Купить подписку";
+    fillProfileForm(body, user);
+  };
+}
 function fillProfileForm(body, user) {
   const saved = userProfile(user.email) || {};
   const sub = productById(CLUB_SUB_ID);
@@ -745,19 +985,38 @@ function fillProfileForm(body, user) {
         `<input id="sub_${field}" name="${field}" type="text" autocomplete="${auto || "off"}" placeholder="${label}" aria-label="${label}" value="${esc(saved[field] || "")}" />`
       ).join("")}
       <p class="join-sub-price"><span>Стоимость подписки</span><strong>${money(sub.price)}</strong></p>
+      <label class="join-sub-agree" for="subAgree">
+        <input id="subAgree" name="agree" type="checkbox" />
+        <span>Совершая покупку, я соглашаюсь с <a href="#sub-terms" id="subTermsLink">правилами</a></span>
+      </label>
       <p class="form-error" id="subProfileError" hidden></p>
       <button class="btn join-submit" type="submit">Купить подписку</button>
     </form>`;
+  $("subTermsLink").onclick = (event) => {
+    event.preventDefault();
+    $("subSheetTitle").textContent = "Правила подписки";
+    fillSubTerms(body, user);
+  };
   $("subProfileForm").onsubmit = (event) => {
     event.preventDefault();
+    const err = $("subProfileError");
+    if (!$("subAgree") || !$("subAgree").checked) {
+      if (err) {
+        err.hidden = false;
+        err.textContent = "Отметьте согласие с правилами подписки";
+      }
+      return;
+    }
     const payload = {};
     PROFILE_FIELDS.forEach(([field]) => {
       payload[field] = ($("sub_" + field) || {}).value || "";
     });
     const error = saveUserProfile(user.email, payload);
     if (error) {
-      $("subProfileError").hidden = false;
-      $("subProfileError").textContent = error;
+      if (err) {
+        err.hidden = false;
+        err.textContent = error;
+      }
       return;
     }
     paintJoin();
@@ -848,7 +1107,7 @@ function card(p) {
   return `<article class="card">
     ${visual}
     <h3>${title}</h3>
-    <div class="stars">${p.reviews ? "★★★★★ <span>(" + p.reviews + ")</span>" : "Новинка"}</div>
+    <div class="stars">${p.reviews ? `<a class="stars-link" href="otzyvy.html">★★★★★ <span>(${p.reviews})</span></a>` : "Новинка"}</div>
     <div class="price">${from}${money(priceUsd)}${memberNote}</div>
     <button class="btn btn-cart" type="button" data-add="${p.id}" ${p.soon ? "disabled" : ""}>${p.soon ? "Скоро" : "В корзину"}</button>
     <a class="more" href="${href}">Есть ещё вкусы →</a>
@@ -1042,8 +1301,109 @@ megaMenu.addEventListener("mouseleave", () => {
   clearTimeout(megaTimer);
   megaTimer = setTimeout(() => megaMenu.classList.remove("open"), 280);
 });
+function reviewCard([text, name, tag]) {
+  const label = tag ? `<small class="review-tag">${esc(tag)}</small>` : "";
+  return `<blockquote class="review"><div class="stars">★★★★★</div>${label}<p>${esc(text)}</p><cite>${esc(name)}</cite></blockquote>`;
+}
+function starsHtml(count) {
+  const n = Math.max(1, Math.min(5, Number(count) || 5));
+  return "★".repeat(n) + (n < 5 ? `<span class="stars-empty">${"★".repeat(5 - n)}</span>` : "");
+}
+function reviewWallCard(entry) {
+  const item = entry.productId ? productById(entry.productId) : null;
+  const productName = item ? item.name : (entry.productName || "");
+  const productImg = item ? item.img : (entry.productImg || "");
+  const href = entry.productId ? productHref(entry.productId) : "index.html#shop";
+  const photo = entry.photo
+    ? `<img class="review-wall-photo" src="${esc(entry.photo)}" alt="" loading="lazy" />`
+    : "";
+  const product = (item || entry.productName)
+    ? `<a class="review-wall-product" href="${href}">
+        <img src="${esc(productImg || "img/brand/trust-club-logo.svg")}" alt="" />
+        <span class="review-wall-product-meta">
+          <span class="review-wall-product-name">${esc(productName).toUpperCase()}</span>
+          ${entry.productNote ? `<span class="review-wall-product-note">${esc(entry.productNote)}</span>` : ""}
+        </span>
+      </a>`
+    : "";
+  return `<article class="review-wall-card">
+    ${photo}
+    <div class="review-wall-body">
+      <div class="review-wall-who">
+        <div class="review-wall-nameblock">
+          <strong>${esc(entry.name)}</strong>
+          ${entry.city ? `<span class="review-city">${esc(entry.city)}</span>` : ""}
+        </div>
+        <span class="review-verified" title="Подтверждённый покупатель"><span aria-hidden="true">✓</span> Подтверждён</span>
+      </div>
+      <div class="stars review-wall-stars">${starsHtml(entry.stars)}</div>
+      <p>${esc(entry.text)}</p>
+      ${product}
+    </div>
+  </article>`;
+}
+const FRIENDS_VIDEOS = [
+  { src: "img/videos/friends-01.mp4?v=2" },
+  { src: "img/videos/friends-02.mp4?v=2" },
+  { src: "img/videos/friends-03.mp4?v=2" },
+  { src: "img/videos/friends-04.mp4?v=2" }
+];
+
+function friendCard(entry) {
+  return `<article class="friend-card" data-friend-video>
+    <video playsinline muted loop preload="metadata" src="${esc(entry.src)}"></video>
+    <span class="friend-play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </span>
+  </article>`;
+}
+
+function bindFriendsVideos() {
+  const rail = $("friendsRail");
+  if (!rail) return;
+  const stopAll = (except) => {
+    rail.querySelectorAll("[data-friend-video]").forEach((other) => {
+      if (except && other === except) return;
+      const v = other.querySelector("video");
+      if (!v) return;
+      v.pause();
+      other.classList.remove("is-playing");
+    });
+  };
+  const startVideo = (card, video) => {
+    const play = () => {
+      video.muted = true;
+      video.play().then(() => card.classList.add("is-playing")).catch(() => {});
+    };
+    if (video.readyState >= 2) play();
+    else {
+      video.addEventListener("loadeddata", play, { once: true });
+      video.load();
+    }
+  };
+  rail.querySelectorAll("[data-friend-video]").forEach((card) => {
+    const video = card.querySelector("video");
+    if (!video) return;
+    card.addEventListener("mouseenter", () => {
+      stopAll(card);
+      startVideo(card, video);
+    });
+    card.addEventListener("mouseleave", () => {
+      video.pause();
+      card.classList.remove("is-playing");
+    });
+  });
+}
+
 if ($("reviewRow")) {
-  $("reviewRow").innerHTML = REVIEWS.slice(0, 3).map(([text, name]) => `<blockquote class="review"><div class="stars">★★★★★</div><p>${text}</p><cite>${name}</cite></blockquote>`).join("");
+  $("reviewRow").innerHTML = REVIEWS.slice(0, 3).map(reviewCard).join("");
+}
+if ($("reviewsPageList")) {
+  $("reviewsPageList").innerHTML = REVIEWS_WALL.map(reviewWallCard).join("");
+}
+if ($("friendsRail")) {
+  $("friendsRail").innerHTML = FRIENDS_VIDEOS.map(friendCard).join("");
+  bindFriendsVideos();
 }
 if ($("compare")) {
   $("compare").innerHTML = COMPARE.map((row) => `<tr><td>${row}</td><td class="yes">✓</td><td class="no">×</td></tr>`).join("");
@@ -1178,6 +1538,13 @@ document.addEventListener("click", (e) => {
     if ($("best")) renderBest();
     toast("Подписка отменена");
   }
+  const copyOrder = e.target.closest("[data-copy-order]");
+  if (copyOrder) {
+    const code = copyOrder.dataset.copyOrder || "";
+    if (code) {
+      navigator.clipboard.writeText(code).then(() => toast("Номер скопирован")).catch(() => toast(code));
+    }
+  }
   const rm = e.target.closest("[data-rm]");
   if (rm) {
     const line = state.cart.find((l) => lineToken(l) === rm.dataset.rm);
@@ -1236,7 +1603,7 @@ $("closeCart").onclick = () => setOpen("drawer", false);
 $("openAccount").onclick = () => {
   showJoin(currentUser() ? "login" : "register");
 };
-$("checkout").onclick = () => {
+$("checkout").onclick = async () => {
   if (!state.cart.length) return toast("Корзина пока пуста");
   if (deliveryRubFor() > 0 && !cartRegion()) {
     toast("Выберите регион доставки");
@@ -1272,10 +1639,18 @@ $("checkout").onclick = () => {
     state.cart = state.cart.filter((line) => !line.subscribe);
     saveCart();
     paintJoin();
-    toast(state.cart.length ? "Подписка оформлена. Остальное осталось в корзине: это демо не принимает оплату" : "Подписка оформлена");
+    toast(state.cart.length ? "Подписка оформлена. Остальное осталось в корзине" : "Подписка оформлена");
     return;
   }
-  toast("Это демо не принимает оплату");
+  const user = currentUser();
+  if (!user) {
+    showJoin("register");
+    toast("Войдите, чтобы оплатить заказ и получить номер");
+    return;
+  }
+  if (isAdmin(user)) return toast("Админ не оформляет заказы покупателя");
+  setOpen("drawer", false);
+  openCartPaySheet();
 };
 if ($("footerLogin")) $("footerLogin").onclick = () => showJoin("login");
 function bindJoinCabinet() {
@@ -1374,10 +1749,118 @@ const CHAT_GREETING = "Здравствуйте, вам нужна помощь 
 const CHAT_API = (location.protocol === "http:" || location.protocol === "https:")
   ? (location.origin + "/api/chat")
   : "";
+const ORDERS_API = (location.protocol === "http:" || location.protocol === "https:")
+  ? (location.origin + "/api/orders")
+  : "";
 let chatThread = "";
 let chatCache = [];
 let chatApiOnline = false;
 let chatSyncing = false;
+
+function localOrders() {
+  const data = loadJson("bb-orders", []);
+  return Array.isArray(data) ? data : [];
+}
+function saveLocalOrders(list) {
+  localStorage.setItem("bb-orders", JSON.stringify(list.slice(0, 40)));
+}
+function rememberLocalOrder(order) {
+  if (!order || !order.code) return;
+  const list = localOrders().filter((row) => row.code !== order.code);
+  list.unshift(order);
+  saveLocalOrders(list);
+  try {
+    sessionStorage.setItem("bb-last-order", order.code);
+  } catch {}
+}
+function lastOrderCode() {
+  try {
+    return sessionStorage.getItem("bb-last-order") || "";
+  } catch {
+    return "";
+  }
+}
+function cartLinesForOrder() {
+  return state.cart.map((line) => {
+    const item = productById(line.id);
+    const usd = cartLineUsd(line);
+    return {
+      id: line.id,
+      name: item ? item.name : line.id,
+      qty: line.qty,
+      priceRub: Math.round((usd / Math.max(1, line.qty)) * USD_RUB)
+    };
+  }).filter((row) => row.id);
+}
+async function createServerOrder(payload) {
+  if (!ORDERS_API) throw new Error("Сервер заказов недоступен. Откройте сайт через http://127.0.0.1:8000/");
+  const res = await fetch(ORDERS_API, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.order || !data.order.code) {
+    throw new Error((data && data.error) || "Не удалось создать заказ");
+  }
+  rememberLocalOrder(data.order);
+  return data.order;
+}
+async function fetchMyOrders(email) {
+  if (!ORDERS_API || !email) return localOrders().filter((o) => o.email === email);
+  try {
+    const res = await fetch(ORDERS_API + "?email=" + encodeURIComponent(email), { cache: "no-store" });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !Array.isArray(data.orders)) return localOrders().filter((o) => o.email === email);
+    data.orders.forEach(rememberLocalOrder);
+    return data.orders;
+  } catch {
+    return localOrders().filter((o) => o.email === email);
+  }
+}
+function showOrderSuccess(order) {
+  const code = order && order.code ? order.code : "";
+  if (!code) return;
+  const box = document.createElement("aside");
+  box.className = "order-success";
+  box.setAttribute("role", "dialog");
+  box.innerHTML = `
+    <div class="order-success-card">
+      <strong>Заказ оформлен</strong>
+      <p>Ваш уникальный номер заказа:</p>
+      <p class="order-success-code" id="orderSuccessCode">${esc(code)}</p>
+      <p class="order-success-hint">Сохраните номер или сделайте скриншот. Напишите его в чат поддержки, чтобы уточнить адрес и оформить доставку.</p>
+      <div class="order-success-actions">
+        <button class="btn" type="button" id="orderCopyCode">Скопировать номер</button>
+        <button class="btn join-submit" type="button" id="orderOpenChat">Написать в поддержку</button>
+        <button class="text-link" type="button" id="orderSuccessClose">Закрыть</button>
+      </div>
+    </div>`;
+  document.body.appendChild(box);
+  const close = () => box.remove();
+  $("orderSuccessClose").onclick = close;
+  box.addEventListener("click", (event) => {
+    if (event.target === box) close();
+  });
+  $("orderCopyCode").onclick = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      toast("Номер скопирован");
+    } catch {
+      toast(code);
+    }
+  };
+  $("orderOpenChat").onclick = () => {
+    close();
+    const launch = $("chatLaunch");
+    if (launch) launch.click();
+    const text = $("chatText");
+    if (text && !text.value.trim()) {
+      text.value = "Здравствуйте! Номер заказа: " + code + ". Хочу уточнить данные для доставки.";
+      text.focus();
+    }
+  };
+}
 
 function ensureAdmin() {
   const list = users();
