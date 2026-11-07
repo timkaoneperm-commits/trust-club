@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>Trust-Club</title>
+  <link rel="icon" href="img/brand/trust-club-logo.svg" type="image/svg+xml" />
+  <meta name="description" content="Полноценные съедобные сладости с "секретным ингридиентом" — незаметная и законная доставка до двери." />
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <link rel="stylesheet" href="css/styles.css?v=50" />
+</head>
+<body class="locked">
+  <div class="overlay open" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+    <div class="modal">
+      <div class="drip"></div>
+      <div class="modal-body">
+        <img class="logo-pop" src="img/brand/trust-club-logo.svg" alt="Trust-Club" />
+        <p class="eyebrow">ПОДТВЕРДИТЕ ВОЗРАСТ</p>
+        <h2 id="ageTitle">ВАМ УЖЕ ЕСТЬ 21?</h2>
+        <p>Чтобы войти в магазин, вам должно быть не меньше 21 года</p>
+        <select id="stateSelect" aria-label="Выберите регион">
+          <option value="">Выберите регион</option>
+        </select>
+        <div class="age-actions">
+          <button class="btn btn-no" type="button" id="ageNo">Нет</button>
+          <button class="btn btn-yes" type="button" id="ageYes" disabled>Да</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" id="top" aria-label="Акции">
+    <div class="marquee-track" id="marquee"></div>
+  </div>
+
+  <header class="header">
+    <div class="header-row">
+      <button class="icon-btn menu-btn" type="button" id="openMenu" aria-label="Открыть меню">☰</button>
+      <a class="logo" href="#top" aria-label="Trust-Club">
+        <img src="img/brand/trust-club-logo.svg" alt="Trust-Club" />
+      </a>
+      <form class="search" id="searchForm" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+        <input id="searchInput" type="search" placeholder="Поиск по магазину" aria-label="Поиск по магазину" />
+      </form>
+      <div class="header-tools">
+        <div class="mail-block">
+          <a class="mail" href="mailto:support@trust-club.com">support@trust-club.com</a>
+          <p class="deliver" id="deliverTo" hidden>
+            <svg width="15" height="18" viewBox="0 0 24 32" aria-hidden="true"><path fill="currentColor" d="M12 1C6.2 1 1.5 5.8 1.5 11.7 1.5 19.2 12 31 12 31s10.5-11.8 10.5-19.3C22.5 5.8 17.8 1 12 1z"/><circle cx="12" cy="11.5" r="3.6" fill="#fdf0ce"/></svg>
+            <span id="deliverRegion"></span>
+          </p>
+          <div class="region-banner" id="regionGate" hidden>
+            <p class="region-banner-title">Выберите регион</p>
+            <div class="region-list" id="regionList"></div>
+          </div>
+        </div>
+        <button class="icon-btn" type="button" id="openAccount" aria-label="Войти">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.2"/><path d="M5 19c1.4-3 3.8-4.5 7-4.5S17.6 16 19 19"/></svg>
+        </button>
+        <button class="icon-btn" type="button" id="openCart" aria-label="Корзина">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7L5 4H2"/><circle cx="9" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Основное меню">
+      <div class="mega">
+        <a href="#shop">ВСЕ ТОВАРЫ ›</a>
+        <div class="mega-panel" id="mega"></div>
+      </div>
+      <a href="#shop">НАБОРЫ СО СКИДКОЙ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Жизнь вкуснее с Trust-Club</h1>
+        <p class="sub">Полноценные съедобные сладости с "секретным ингредиентом" — незаметная и законная доставка до двери.</p>
+        <a class="btn btn-hero" href="#shop">Купить сладости ></a>
+      </div>
+      <div class="hero-art">
+        <img src="img/brand/banner-trust-club.png?v=15" alt="Trust-Club: мороженое со вкусом молочного шоколада, мармелад со вкусом сахарной ваты, мармелад со вкусом кислого арбуза и мороженое с клубничным вкусом" />
+      </div>
+      <div class="hero-follow">
+        <div class="social-proof">
+          <img src="img/brand/hero-avatars.png" alt="" />
+          <div>
+            <strong>1,500+</strong>
+            <span>ДОВОЛЬНЫХ КЛИЕНТОВ</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="wrap">
+        <p class="kicker">ИЗБРАННЫЕ ХИТЫ</p>
+        <h2 class="center-title">Лакомства на любое настроение</h2>
+        <div class="toolbar">
+          <div class="tabs" id="tabs"></div>
+        </div>
+        <div class="grid" id="grid"></div>
+      </div>
+    </section>
+
+    <div class="icon-band">
+      <div class="band-item">
+        <div class="band-row">
+          <svg class="flag" viewBox="0 0 190 100" role="img" aria-label="Флаг США">
+            <rect width="190" height="100" fill="#B22234"/>
+            <g fill="#fff">
+              <rect y="7.7" width="190" height="7.7"/>
+              <rect y="23.1" width="190" height="7.7"/>
+              <rect y="38.5" width="190" height="7.7"/>
+              <rect y="53.8" width="190" height="7.7"/>
+              <rect y="69.2" width="190" height="7.7"/>
+              <rect y="84.6" width="190" height="7.7"/>
+            </g>
+            <rect width="76" height="53.8" fill="#3C3B6E"/>
+            <g fill="#fff">
+              <circle cx="8" cy="6" r="1.5"/><circle cx="20" cy="6" r="1.5"/><circle cx="32" cy="6" r="1.5"/><circle cx="44" cy="6" r="1.5"/><circle cx="56" cy="6" r="1.5"/><circle cx="68" cy="6" r="1.5"/>
+              <circle cx="14" cy="13" r="1.5"/><circle cx="26" cy="13" r="1.5"/><circle cx="38" cy="13" r="1.5"/><circle cx="50" cy="13" r="1.5"/><circle cx="62" cy="13" r="1.5"/>
+              <circle cx="8" cy="20" r="1.5"/><circle cx="20" cy="20" r="1.5"/><circle cx="32" cy="20" r="1.5"/><circle cx="44" cy="20" r="1.5"/><circle cx="56" cy="20" r="1.5"/><circle cx="68" cy="20" r="1.5"/>
+              <circle cx="14" cy="27" r="1.5"/><circle cx="26" cy="27" r="1.5"/><circle cx="38" cy="27" r="1.5"/><circle cx="50" cy="27" r="1.5"/><circle cx="62" cy="27" r="1.5"/>
+              <circle cx="8" cy="34" r="1.5"/><circle cx="20" cy="34" r="1.5"/><circle cx="32" cy="34" r="1.5"/><circle cx="44" cy="34" r="1.5"/><circle cx="56" cy="34" r="1.5"/><circle cx="68" cy="34" r="1.5"/>
+              <circle cx="14" cy="41" r="1.5"/><circle cx="26" cy="41" r="1.5"/><circle cx="38" cy="41" r="1.5"/><circle cx="50" cy="41" r="1.5"/><circle cx="62" cy="41" r="1.5"/>
+              <circle cx="8" cy="48" r="1.5"/><circle cx="20" cy="48" r="1.5"/><circle cx="32" cy="48" r="1.5"/><circle cx="44" cy="48" r="1.5"/><circle cx="56" cy="48" r="1.5"/><circle cx="68" cy="48" r="1.5"/>
+            </g>
+          </svg>
+          <b class="band-title">Сделано в США</b>
+        </div>
+        <p class="band-note">Местонахождение: Россия, Московская область</p>
+      </div>
+      <div class="band-item">
+        <div class="band-row">
+          <div class="flag-stack">
+          <svg class="flag" viewBox="0 0 90 45" role="img" aria-label="Флаг Беларуси">
+            <rect width="90" height="30" fill="#CF101A"/>
+            <rect y="30" width="90" height="15" fill="#009A44"/>
+            <rect width="14" height="45" fill="#fff"/>
+            <g fill="#CF101A">
+              <rect x="4" y="3" width="6" height="4" rx="1"/>
+              <rect x="5" y="9" width="4" height="4"/>
+              <rect x="4" y="15" width="6" height="4" rx="1"/>
+              <rect x="5" y="21" width="4" height="4"/>
+              <rect x="4" y="27" width="6" height="4" rx="1"/>
+              <rect x="5" y="33" width="4" height="4"/>
+              <rect x="4" y="39" width="6" height="3" rx="1"/>
+            </g>
+          </svg>
+          <svg class="flag" viewBox="0 0 90 45" role="img" aria-label="Флаг Казахстана">
+            <rect width="90" height="45" fill="#00AFCA"/>
+            <g fill="#FEC50C" transform="translate(45 20)">
+              <circle r="6.2"/>
+              <g>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(22.5)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(45)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(67.5)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(90)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(112.5)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(135)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(157.5)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(180)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(202.5)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(225)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(247.5)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(270)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(292.5)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(315)"/>
+                <rect x="-0.7" y="-14" width="1.4" height="5" rx="0.5" transform="rotate(337.5)"/>
+              </g>
+            </g>
+          </svg>
+          </div>
+          <p class="band-note">Из РФ есть доставка в Беларусь и в Казахстан</p>
+        </div>
+      </div>
+      <div class="band-item">
+        <p class="band-note">Для изготовления использованы только проверенные компоненты, есть лабораторный тест.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap carousel">
+        <div class="split-head best-head">
+          <h2 class="center-title">Бестселлеры</h2>
+          <a class="shop-all" href="#shop">Все товары</a>
+        </div>
+        <button class="arrow prev" type="button" id="prevBest" aria-label="Предыдущий слайд">‹</button>
+        <button class="arrow next" type="button" id="nextBest" aria-label="Следующий слайд">›</button>
+        <div class="carousel-row" id="best"></div>
+      </div>
+    </section>
+
+    <section class="section elevate" id="about">
+      <div class="wrap">
+        <h2>Каждый кусочек — стоит внимания</h2>
+        <div class="elevate-grid">
+          <div>
+            <div class="feature"><img src="img/ui/feature-thc.svg" alt="" /><div><b>В представленной продукции содержится ТГК</b><p>Представленные товары содержат дельта-9 — основной психоактивный каннабиноид растения Cannabis.</p></div></div>
+            <div class="feature"><img src="img/ui/feature-ship.svg" alt="" /><div><b>НЕЗАМЕТНАЯ ДОСТАВКА</b><p>Все заказы отправляются в простой упаковке без опознавательных знаков, чтобы посылка пришла спокойно и без лишних надписей. Работаем с CDEK, PDP.</p></div></div>
+            <div class="feature"><img src="img/ui/feature-card.svg" alt="" /><div><b>МЕДКАРТА НЕ НУЖНА</b><p>Trust-Club можно заказать без медицинской карты — для этой покупки она не требуется.</p></div></div>
+          </div>
+          <img class="elevate-photo" src="img/ice-cream/elevate-cookies-cream.jpg?v=7" alt="Coned Cookies and Cream со стаканом мороженого" />
+          <div>
+            <div class="feature"><img src="img/ui/feature-lab.svg" alt="" /><div><b>СДЕЛАНО В США И ПРОВЕРЕНО</b><p>Продукты произведены в США, затем завезены в РФ и проверены независимой лабораторией на качество и соответствие нормам.</p></div></div>
+            <div class="feature"><img src="img/ui/feature-strength.svg" alt="" /><div><b>ВЫСОКАЯ КРЕПОСТЬ</b><p>Формулы сильные: каждый кусочек даёт насыщенный и понятный эффект.</p></div></div>
+            <div class="feature"><img src="img/ui/feature-ingredients.svg" alt="" /><div><b>ХОРОШИЕ ИНГРЕДИЕНТЫ</b><p>В составе только качественные ингредиенты — вкус остаётся главным. Есть понятные лабораторные тесты.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="brand-band">
+      <h2>Самый быстрорастущий бренд съедобных продуктов в США</h2>
+    </section>
+
+    <section class="section reviews" id="reviews">
+      <div class="wrap">
+        <div class="split-head">
+          <h2>Отзывы</h2>
+          <a class="shop-all" href="#reviews">4,8/5 · 358 отзывов</a>
+        </div>
+        <div class="review-row" id="reviewRow"></div>
+      </div>
+    </section>
+
+    <section class="section compare-wrap">
+      <div class="wrap">
+        <h2 class="center-title">Как выглядит Trust-Club</h2>
+        <div class="compare-card">
+          <table class="compare">
+            <thead>
+              <tr><th></th><th class="brand">Trust-Club</th><th>Другие</th></tr>
+            </thead>
+            <tbody id="compare"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <h2 class="center-title">Частые вопросы</h2>
+        <div id="faqList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="blog">
+      <div class="wrap">
+        <div class="split-head">
+          <h2>Узнать больше</h2>
+          <a class="shop-all" href="#blog">Все статьи</a>
+        </div>
+        <div class="blog-grid" id="blogGrid"></div>
+      </div>
+    </section>
+
+    <section class="section ceo-wrap" id="ceo">
+      <div class="wrap">
+        <div class="ceo">
+          <p class="eyebrow">Письмо от генерального директора</p>
+          <h2>Внимание!</h2>
+          <p>Любимые продукты Trust-Club быстро заканчиваются. Альтернативы ещё есть, но в США будет принят закон, который запретит продажу конопли <strong>11 декабря 2026 года</strong>. Дата быстро приближается.</p>
+          <p>Срок хранения около двух лет, поэтому какое-то количество времени на новые партии у нас ещё есть, <strong>любимые вкусы лучше взять сейчас</strong>. Запрет затронет каждого покупателя, магазин и конкурента, кто продаёт опьяняющую коноплю. <strong>Мы завезём ещё несколько последних новинок, а затем повернём бренд в новую сторону.</strong></p>
+          <p class="ceo-callout">Это не конец. Это напоминание, что ситуация меняется каждый день.</p>
+          <div class="ceo-foot">
+            <div>
+              <p>Спасибо, что вы часть нашей семьи.</p>
+              <strong class="ceo-name">Джек</strong>
+              <span>генеральный директор, Trust-Club</span>
+            </div>
+            <a class="btn" href="#shop">Запастись сейчас</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <div>
+        <h3>Магазин</h3>
+        <a href="morozhenoe.html">Мороженки</a>
+        <a href="pechenie.html">Печенье</a>
+        <a href="marmelad.html">Мармелад</a>
+        <a href="#shop">Попкорн</a>
+        <a href="#shop">Наборы вкусов</a>
+      </div>
+      <div>
+        <h3>Ссылки</h3>
+        <a href="#shop">Товары</a>
+        <a href="#about">Лабораторные тесты</a>
+        <a href="#faq">Вопросы</a>
+        <a href="mailto:support@trust-club.com">Связаться</a>
+        <a href="#blog">Статьи</a>
+        <button class="foot-login" type="button" id="footerLogin">Вход</button>
+      </div>
+      <div>
+        <h3>Поддержка</h3>
+        <a href="#faq">Возврат</a>
+        <a href="#faq">Доставка</a>
+        <a href="#faq">Условия</a>
+        <a href="#faq">Конфиденциальность</a>
+        <a href="mailto:support@trust-club.com">support@trust-club.com</a>
+        <p class="foot-address">Московская область, город Москва. РФ.</p>
+      </div>
+      <div class="foot-brand">
+        <img class="foot-logo" src="img/brand/trust-club-logo.svg" alt="Trust-Club" />
+        <div class="socials">
+          <a href="#top" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#top" aria-label="Telegram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 4.3 2.8 11.5c-1.2.5-1.2 1.1-.2 1.4l4.8 1.5 1.8 5.7c.2.7.1.9.8.9.5 0 .7-.2 1-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.8l3-14.4c.3-1.2-.5-1.8-1.8-1.3zM9.3 14.4l8.6-5.4c.4-.3.8-.1.5.2l-7 6.4-.3 3.1-1.8-4.3z"/></svg></a>
+        </div>
+      </div>
+      <div class="news">
+        <h3>Рассылка</h3>
+        <input id="email" type="email" placeholder="вы@почта.com" aria-label="Эл. почта" />
+        <button class="btn" type="button" id="subscribe">Подписаться</button>
+        <div class="pay-row" aria-hidden="true">
+          <svg viewBox="0 0 38 24"><rect width="38" height="24" rx="3" fill="#1a4f9c"/><text x="19" y="15" text-anchor="middle" fill="#fff" font-size="7" font-family="Arial,sans-serif">AMEX</text></svg>
+          <svg viewBox="0 0 38 24"><rect width="38" height="24" rx="3" fill="#111"/><text x="19" y="15" text-anchor="middle" fill="#fff" font-size="8" font-family="Arial,sans-serif">Pay</text></svg>
+          <svg viewBox="0 0 38 24"><rect width="38" height="24" rx="3" fill="#fff"/><circle cx="15" cy="12" r="6" fill="#eb001b"/><circle cx="23" cy="12" r="6" fill="#f79e1b" opacity="0.9"/></svg>
+          <svg viewBox="0 0 38 24"><rect width="38" height="24" rx="3" fill="#fff"/><text x="19" y="15" text-anchor="middle" fill="#1a1f71" font-size="9" font-family="Arial,sans-serif" font-weight="700">VISA</text></svg>
+          <svg viewBox="0 0 38 24"><rect width="38" height="24" rx="3" fill="#fff"/><text x="19" y="15" text-anchor="middle" fill="#222" font-size="7" font-family="Arial,sans-serif">MC</text></svg>
+        </div>
+        <p class="disclaimer">Продукты не предназначены для диагностики, лечения или профилактики заболеваний.</p>
+        <p class="disclaimer">Только 21+</p>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="drawer" id="drawer" aria-label="Корзина">
+    <div class="drawer-head">
+      <strong>Ваша корзина</strong>
+      <button class="icon-btn" type="button" id="closeCart" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="lines" id="lines"></div>
+    <div class="drawer-foot">
+      <p class="subtotal"><span>Сумма</span><strong id="subtotal">0 ₽</strong></p>
+      <p class="subtotal cart-ship" id="shipRow" hidden><span id="shipLabel">Доставка</span><strong id="shipping">0 ₽</strong></p>
+      <p class="cart-ship-hint" id="shipHint" hidden>При заказе от 10 000 ₽ доставка бесплатная</p>
+      <p class="subtotal cart-total" id="totalRow" hidden><span>Итого</span><strong id="cartTotal">0 ₽</strong></p>
+      <button class="btn btn-cart" type="button" id="checkout">Оформить</button>
+    </div>
+  </aside>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="icon-btn" type="button" id="closeMenu" aria-label="Закрыть меню">✕</button>
+    <a href="morozhenoe.html">Мороженое</a>
+    <a href="pechenie.html">Печенье</a>
+    <a href="marmelad.html">Мармелад</a>
+    <a href="#shop">Все товары</a>
+    <a href="#shop">Наборы со скидкой</a>
+    <a href="#faq">Вопросы</a>
+  </nav>
+
+  <aside class="join-hero" id="joinHero" hidden>
+    <div class="join-panel" role="dialog" aria-modal="true" aria-labelledby="joinTitle">
+      <header class="join-top">
+        <img src="img/brand/trust-club-logo.svg" alt="Trust-Club" />
+        <button class="join-close" type="button" id="joinClose" aria-label="Закрыть">✕</button>
+      </header>
+      <div class="join-scroll" id="joinScroll">
+        <section class="join-block" data-join-block="profile">
+          <h2 id="joinTitle">Войдите в аккаунт</h2>
+          <p id="joinLead">Заказы, подписки и избранное — в одном кабинете.</p>
+          <p class="join-plan" id="joinPlan"></p>
+          <div id="joinGuest">
+            <form id="joinForm" novalidate>
+              <input id="joinName" type="text" autocomplete="name" placeholder="Имя" aria-label="Имя" />
+              <input id="joinEmail" type="email" inputmode="email" autocomplete="email" placeholder="Эл. почта" aria-label="Эл. почта" />
+              <input id="joinPass" type="password" autocomplete="new-password" placeholder="Пароль, от 6 символов" aria-label="Пароль" />
+              <p class="form-error" id="joinError" hidden></p>
+              <button class="btn join-submit" type="submit" id="joinSubmit">Зарегистрироваться</button>
+            </form>
+            <button class="text-link" type="button" id="joinSwitch">Уже есть аккаунт? Войти</button>
+            <p class="join-legal">Регистрируясь, вы соглашаетесь с <a href="#faq">условиями</a> и <a href="#faq">политикой конфиденциальности</a>.</p>
+          </div>
+          <div class="join-member" id="joinMember">
+            <p id="joinMemberLead">Здесь ваши подписки, избранное и недавние товары.</p>
+            <button class="btn join-submit" type="button" id="joinLogout">Выйти</button>
+          </div>
+        </section>
+        <div class="join-chip-row at-start" data-join-block="you">
+          <div class="join-chips" id="joinChips">
+            <a href="morozhenoe.html">Мороженое</a>
+            <a href="pechenie.html">Печенье</a>
+            <a href="marmelad.html">Мармелад</a>
+            <a href="#shop">Наборы</a>
+            <a href="#shop">Новинки</a>
+          </div>
+          <button class="join-chip-prev" type="button" id="joinChipPrev" aria-label="Прокрутить влево">‹</button>
+          <button class="join-chip-next" type="button" id="joinChipNext" aria-label="Прокрутить вправо">›</button>
+        </div>
+        <div id="joinBlocks">
+          <section class="join-block" data-join-block="seen">
+            <h3>Недавно смотрели</h3>
+            <div class="join-rail" id="joinSeen"></div>
+          </section>
+          <section class="join-block" data-join-block="favs">
+            <h3>Избранное <span aria-hidden="true">></span></h3>
+            <div id="joinFavs"></div>
+          </section>
+          <section class="join-block" data-join-block="popular">
+            <h3>Популярное сегодня</h3>
+            <div class="join-rail-row at-start">
+              <div class="join-rail" id="joinPopular"></div>
+              <button class="join-chip-prev" type="button" id="joinPopularPrev" aria-label="Прокрутить влево">‹</button>
+              <button class="join-chip-next" type="button" id="joinPopularNext" aria-label="Прокрутить вправо">›</button>
+            </div>
+          </section>
+          <section class="join-block" data-join-block="orders">
+            <h3>Заказы</h3>
+            <div id="joinOrders"></div>
+          </section>
+        </div>
+      </div>
+      <nav class="join-dock" id="joinDock" aria-label="Разделы кабинета">
+        <button type="button" class="on" data-join="you">Для вас</button>
+        <button type="button" data-join="orders">Заказы</button>
+        <button type="button" data-join="profile">Профиль</button>
+      </nav>
+    </div>
+  </aside>
+
+  <aside class="reg-success" id="heroSuccess" hidden role="status">
+    <div class="reg-success-head">
+      <strong>Регистрация прошла успешно</strong>
+      <button type="button" id="heroSuccessClose" aria-label="Закрыть">✕</button>
+    </div>
+    <p class="reg-success-text">Теперь можно оформлять подписку и заказы в личном кабинете.</p>
+  </aside>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/app.js?v=77" defer></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Local / runtime
+server/data/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Editor
+.cursor/
+.vscode/
+*.swp
+*.swo
+
+# Archives / local dumps
+*.zip
+_patch_*.py
